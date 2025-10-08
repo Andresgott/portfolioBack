@@ -12,7 +12,12 @@ const port = process.env.PORT || 3000;
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
+  ssl: {
+    require: true,             // 🔥 Render exige conexión SSL
+    rejectUnauthorized: false, // 🔥 evita problemas con el certificado
+  },
 });
+
 
 app.use(cors());
 app.use(express.json());
